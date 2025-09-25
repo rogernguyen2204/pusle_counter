@@ -1,0 +1,86 @@
+# vsim -debugDB -l test.log -voptargs="+acc" -assertdebug -c test_bench -do "log -r /*;run -all;" 
+# Start time: 10:36:24 on Sep 18,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vsim-8611) Generating debug db.
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2024.3 linux_x86_64 Sep 10 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.test_bench(fast)
+# Loading work.counter_top(fast)
+# Loading work.register(fast)
+# Loading work.counter(fast)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# log -r /*
+# run -all
+# ------------------ TEST BEGIN ---------------
+# 1. RESET VALUE TEST
+# 1.1 CR register
+# Time:  177 | RESET VALUE TEST: PASSED
+# 1.2 SR register
+# Time:  277 | RESET VALUE TEST: PASSED
+# 2. RESERVED BIT  TEST
+# 2.1 CR register
+# Writing 32'hfffffffc ...
+# Time:  477 | RESERVED BIT TEST: PASSED
+# 2.2 SR register
+# Writing 32'hfffffff0 ...
+# Time:  627 | RESERVED BIT TEST: PASSED
+# 3. WRITE/READ ACCESS TEST
+# 3.1 CR register
+# WRITE/READ DEFAULT VALUE
+# Writing 32'h00000000 ...
+# READING FROM ADDRESS: 10'h000
+# Time:  827 | READ 32'h00000000 VALUE TEST: PASSED
+# WRITE/READ pulse_en
+# Writing 32'h00000001 ...
+# READING FROM ADDRESS: 10'h000
+# Time: 1027 | READ 32'h00000000 VALUE TEST: PASSED
+# WRITE/READ Count_clr
+# Writing 32'h00000002 ...
+# READING FROM ADDRESS: 10'h000
+# Time: 1227 | READ 32'h00000002 VALUE TEST: PASSED
+# 3.2 SR register
+# WRITE/READ overflow
+# Writing 32'h00000000 ...
+# READING FROM ADDRESS: 10'h004
+# Time: 1427 | READ 32'h00000000 VALUE TEST: PASSED
+# 4. RESERVED ADDRESS CHECK
+# Writing 32'haaaaaaaa ...
+# READING FROM ADDRESS: 10'h010
+# Time: 1627 | READ 32'h00000000 VALUE TEST: PASSED
+# Writing 32'haaaaaaaa ...
+# READING FROM ADDRESS: 10'h050
+# Time: 1827 | READ 32'h00000000 VALUE TEST: PASSED
+# Writing 32'haaaaaaaa ...
+# READING FROM ADDRESS: 10'h3fc
+# Time: 2027 | READ 32'h00000000 VALUE TEST: PASSED
+# Writing 32'h00000000 ...
+# 5. PULSE GENERATE AND COUNT TEST
+# Time: 2427 | COUNTER COUNT: 3'b001:  PASSED
+# Time: 2827 | COUNTER COUNT: 3'b100:  PASSED
+# Time: 3127 | COUNTER COUNT: 3'b110:  PASSED
+# 6. OVEFLOW FLAG TEST
+# Time: 3527 | OVERFLOW FLAG TEST: PASSED
+# Time: 3676 | OVERFLOW FLAG HOLD TEST: PASSED
+# Time: 3726 | OVERFLOW FLAG CLEAR TEST: PASSED
+# 7. COUNT RECYCLE TEST
+# Time: 3927 | COUNTER COUNT: 3'b001:  PASSED
+# 8. COUNT CLEAR
+# Time: 4027 | COUNTER COUNT: 3'b000:  PASSED
+# ** Note: $finish    : ../tb/test_bench.v(213)
+#    Time: 4127 ns  Iteration: 0  Instance: /test_bench
+# End time: 10:36:25 on Sep 18,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
